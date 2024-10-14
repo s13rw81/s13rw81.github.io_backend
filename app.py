@@ -18,4 +18,5 @@ async def contact(message: Message):
 async def contact(message: Message=None):
     if not message:
         message = Message(name='sourav', message='test github actions', datetime=datetime.now(), email='test@test.com', catagory=Catagory.JOB.value)
+        print('done')
     return {'message' : message}

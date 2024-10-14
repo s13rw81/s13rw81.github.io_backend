@@ -1,0 +1,22 @@
+name: Deploy to Oracle Server
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: set up ssh
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+             ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Deploy to Oracle Server
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.PUBLIC_IP }} 'cd /home/ubuntu/${{ secrets.PROJECT_NAME }} && git pull origin master'

@@ -19,4 +19,4 @@ jobs:
              ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Deploy to Oracle Server
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.PUBLIC_IP }} 'cd /home/ubuntu/${{ secrets.PROJECT_NAME }} && git pull origin master'
+          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.PUBLIC_IP }} 'cd /home/ubuntu/backend/${{ secrets.PROJECT_NAME }} && git pull origin master'
